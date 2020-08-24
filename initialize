@@ -1,0 +1,36 @@
+CREATE TABLE Status (
+  Id INTEGER NOT NULL,
+  Name VARCHAR(20) NOT NULL,
+  CONSTRAINT PK_Status PRIMARY KEY Id
+)
+
+CREATE TABLE User (
+  Id INTEGER AUTOINCREMENT,
+  Name TEXT NOT NULL,
+  Email TExT NOT NULL,
+  Password TExT NOT NULL,
+  CONSTRAINT PK_User PRIMARY KEY Id
+)
+
+CREATE TABLE Order (
+  UserId INTEGER NOT NULL,
+  StatusId INTEGER NOT NULL,
+  TicketId INTEGER NOT NULL,
+  ExperesAt DATETIME NOT NULL DEFAULT now()
+  CONSTRAINT FK_Order_User FOREIGN KEY (OrderId) REFERENCES Order (Id),
+  CONSTRAINT FK_Order_Status FOREIGN KEY (StatusId) REFERENCES Status (Id),
+  CONSTRAINT FK_Order_Ticket FOREIGN KEY (TicketId) REFERENCES Ticket (Id)
+)
+
+CREATE TABLE Charge 
+. OrderId INTEGER NOT NULL,
+. StatusId 
+. Amount
+. StripeId
+. StripeRefundId
+
+CREATE TABLE Ticket
+. Title
+. Price
+. UserId
+. OrderId

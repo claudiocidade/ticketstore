@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: be-auth-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: be-auth
+  template:
+    metadata:
+      labels:
+        app: be-auth
+    spec:
+      containers:
+        - name: be-auth
+          image: claudiocidade/be-auth
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: be-auth-srv
+spec:
+  selector:
+    app: be-auth
+  ports:
+    - name: be-auth
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
