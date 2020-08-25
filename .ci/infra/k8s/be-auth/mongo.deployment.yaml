@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: be-auth-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: be-auth-mongo
+  template:
+    metadata:
+      labels:
+        app: be-auth-mongo
+    spec:
+      containers:
+        - name: auth-mongo
+          image: mongo
